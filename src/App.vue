@@ -4,7 +4,7 @@
 
     </div>
     <img src="./assets/CIC-Rocket.png">
-    <h1>Clicks in Context Google Ads Health Check Tool</h1>
+    <h1>CLICKS IN CONTEXT GOOGLE ADS HEALTH CHECK TOOL</h1>
     <router-view/>
   </div>
 </template>
@@ -16,20 +16,24 @@ export default {
 </script>
 
 <style>
+body {
+  background: #FBFBFB;
+}
 #app {
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 70px;
 }
 #app img {
-  width: 250px
+  width: 140px
 }
 
-h1 {
-  padding: 25px
+#app h1 {
+  padding: 0;
+  margin: 35px 0 60px;
 }
 
 .wrapper {
