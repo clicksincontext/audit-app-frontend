@@ -28,7 +28,7 @@ css: undefined */
 
   publicPath: undefined,
   outputDir: undefined,
-  assetsDir: undefined,
+  assetsDir: 'static',
   runtimeCompiler: true,
   productionSourceMap: undefined,
   parallel: undefined,
