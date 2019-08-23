@@ -2,7 +2,7 @@
   <div id="select">
     <p>{{displayResponse}}</p>
     <p v-if="user && user.name">Hello {{user.name}}. <span v-if="clientList"> Please select an account from the list</span></p>
-    <div id="client_list" v-if="clientList">
+    <div id="client_list" v-if="clientList && !noAds">
       <div class="master_accounts" v-if="clientList.master.length">
         <div v-for="client in clientList.master">
           <div v-if="client.canManageClients">
@@ -22,7 +22,8 @@
         </div>
       </div>
     </div>
-    <span v-if="!clientList"> Loaiding accounts list</span>
+    <span v-if="!clientList && !noAds"> Loading accounts list</span>
+    <span v-if="noAds"> This Google Account is not linked to Google Ads. Please <router-link to="/">try another</router-link> Google Account</span>
   </div>
 </template>
 <script>
@@ -33,7 +34,8 @@ export default {
     return {
       displayResponse: null,
       user: {},
-      clientList: null
+      clientList: null,
+      noAds: false
     }
   },
   methods: {
@@ -54,6 +56,7 @@ export default {
       axios.get(path)
       .then(response => {
         console.log(response.data);
+        if (response.data.status &&  response.data.status == 'no_ads') return this.noAds = true
         let clientList = response.data.reduce((list, client) => {
           if (client.canManageClients) {
            list.master.push(client)
